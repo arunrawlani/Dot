@@ -21,13 +21,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:enabled="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:elevation="10dp"
+        android:onClick="showProgress"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="110dp"
         android:layout_height="50dp"
-        android:text="Games"
+        android:text="@string/games"
         android:id="@+id/button"
         android:layout_marginTop="97dp"
         android:layout_below="@+id/button2"

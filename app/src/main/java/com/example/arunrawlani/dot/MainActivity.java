@@ -1,10 +1,13 @@
 package com.example.arunrawlani.dot;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -35,5 +38,11 @@ public class MainActivity extends AppCompatActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showProgress(View view){
+        //response on clicking the red button
+        Intent intent = new Intent(this, ProgressActivity.class);
+        startActivity(intent);
     }
 }
