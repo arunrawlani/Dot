@@ -7,4 +7,5 @@
     <string name="connect">Connect</string>
     <string name="games">Games</string>
     <string name="resources">Resources</string>
+    <string name="title_activity_progress">ProgressActivity</string>
 </resources>
