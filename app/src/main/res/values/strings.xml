@@ -8,4 +8,7 @@
     <string name="games">Games</string>
     <string name="resources">Resources</string>
     <string name="title_activity_progress">Progress Activity</string>
+    <string name="title_activity_circular_progress_bar">Progress Monitor</string>
+    <string name="switch_theme">Switch Theme</string>
+    <string name="random_color"> Random Colour</string>
 </resources>

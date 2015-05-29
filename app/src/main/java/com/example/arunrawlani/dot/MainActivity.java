@@ -1,6 +1,8 @@
 package com.example.arunrawlani.dot;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void showProgress(View view){
         //response on clicking the red button
-        Intent intent = new Intent(this, ProgressActivity.class);
+        Intent intent = new Intent(this, CircularProgressBar.class);
         startActivity(intent);
     }
 }

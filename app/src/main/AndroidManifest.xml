@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.arunrawlani.dot.MainActivity" />
         </activity>
+        <activity
+            android:name=".CircularProgressBar"
+            android:label="@string/title_activity_circular_progress_bar"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.arunrawlani.dot.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
