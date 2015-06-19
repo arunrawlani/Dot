@@ -1,5 +1,6 @@
 package com.example.arunrawlani.dot;
 
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -186,6 +187,7 @@ public class CircularProgressBar extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
             case R.id.menu_switch_theme:
                 switchTheme();
                 break;

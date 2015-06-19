@@ -195,7 +195,7 @@ public class HoloCircularProgressBar extends View {
     private float mTranslationOffsetY;
 
     /**
-     * The Vertical inset calcualted in {@link #computeInsets(int, int)} depends on {@link
+     * The Vertical inset calculated in {@link #computeInsets(int, int)} depends on {@link
      * #mGravity}..
      */
     private int mVerticalInset = 0;

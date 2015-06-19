@@ -11,4 +11,20 @@
     <string name="title_activity_circular_progress_bar">Progress Monitor</string>
     <string name="switch_theme">Switch Theme</string>
     <string name="random_color"> Random Colour</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login_text">Login</string>
+    <string name="signup_text"> Sign Up!</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="signup_activity_title">Create Account at DOT</string>
+    <string name="parent_name_hint">"Parent's Name"</string>
+    <string name="email_hint">Email</string>
+    <string name="child_information">"Child's Profile Information:"</string>
+    <string name="child_name">Name</string>
+    <string name="child_age">Age</string>
+    <string name="child_type">Type</string>
+    <string name="child_medication">Medication</string>
+    <string name="diagnosis_date">Diagnosis Date (dd/mm/yy)</string>
+    <string name="medication">Medication</string>
 </resources>

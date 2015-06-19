@@ -34,6 +34,10 @@ public class MainActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent= new Intent(this, LoginActivity.class);
+        startActivity(intent);
+
     //Set the adapter for the list view
         mDrawerList = (ListView)findViewById(R.id.navList);
         addDrawerItems();
