@@ -11,7 +11,7 @@
     <string name="title_activity_circular_progress_bar">Progress Monitor</string>
     <string name="switch_theme">Switch Theme</string>
     <string name="random_color"> Random Colour</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Sign in</string>
     <string name="login_text">Login</string>
     <string name="signup_text"> Sign Up!</string>
     <string name="username_hint">Username</string>
@@ -27,4 +27,8 @@
     <string name="child_medication">Medication</string>
     <string name="diagnosis_date">Diagnosis Date (dd/mm/yy)</string>
     <string name="medication">Medication</string>
+    <string name="signup_error_message1">"Please make sure all the fields are filled.</string>
+    <string name="signup_error_message2">"Please enter a gender for the child."</string>
+    <string name="signup_error_message3">"Select only one of the gender options."</string>
+    <string name="signup_error_title">"Oops!"</string>
 </resources>

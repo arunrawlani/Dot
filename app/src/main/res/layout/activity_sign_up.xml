@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Male"
-        android:id="@+id/checkBox"
+        android:id="@+id/child_gender1"
         android:layout_below="@+id/child_age"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Female"
-        android:id="@+id/checkBox2"
+        android:id="@+id/child_gender2"
         android:layout_below="@+id/child_age"
         android:layout_alignRight="@+id/textView3"
         android:layout_alignEnd="@+id/textView3"
@@ -121,9 +121,9 @@
             android:layout_height="50dp"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/diagnosis_date"
+            android:id="@+id/child_diagnosis"
             android:hint="@string/diagnosis_date"
-            android:layout_below="@+id/checkBox"
+            android:layout_below="@+id/child_gender1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -132,9 +132,9 @@
             android:layout_height="50dp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/medication_detail"
+            android:id="@+id/child_medication"
             android:hint="@string/medication"
-            android:layout_below="@+id/diagnosis_date"
+            android:layout_below="@+id/child_diagnosis"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -143,10 +143,10 @@
             android:layout_height="wrap_content"
             android:text="@string/signup_text"
             android:id="@+id/signupButton"
-            android:layout_below="@+id/medication_detail"
+            android:layout_below="@+id/child_medication"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp" />
+            android:layout_marginBottom="36dp" />
 
     </RelativeLayout>
 
