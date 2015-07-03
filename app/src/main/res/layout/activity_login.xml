@@ -23,7 +23,7 @@
         android:inputType="textPersonName"
         android:hint="@string/username_hint"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/usernameField"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" >
@@ -36,21 +36,21 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
+        android:id="@+id/passwordField"
+        android:layout_below="@+id/usernameField"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_alignRight="@+id/usernameField"
+        android:layout_alignEnd="@+id/usernameField"
         android:hint="@string/password_hint" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/login_text"
-        android:id="@+id/button6"
+        android:id="@+id/LoginButton"
         android:layout_marginTop="42dp"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/passwordField"
         android:layout_centerHorizontal="true" />
 
     <TextView

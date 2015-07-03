@@ -3,6 +3,7 @@ package com.example.arunrawlani.dot;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 
 public class SignUpActivity extends Activity {
@@ -77,14 +82,40 @@ public class SignUpActivity extends Activity {
                     AlertDialog dialog= builder.create();
                     dialog.show();
                 }
-                else if(mChildgender.isChecked() && mChildgender.isChecked()){
-                    //error for selecting 2 genders
-                }
-                else if(!(mChildgender.isChecked() && mChildgender.isChecked())){
-                    //error for not selecting any gender
-                }
                 else{
-                    //create the new user
+                    ParseUser newUser = new ParseUser();
+                    newUser.setUsername(username);
+                    newUser.setPassword(password);
+                    newUser.setEmail(email);
+
+                    //other additional fields for child's information
+                    newUser.put("ChildName",childname);
+                    newUser.put("ChildAge",childage);
+                    //insert one for gender
+                    newUser.put("DiagnosisDate", childdiagnosis);
+                    newUser.put("Medication",childmedication);
+
+                    newUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                           if (e == null){
+                               Intent intent = new Intent(SignUpActivity.this, MainActivity.class); //ask! why not login?
+                               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                               startActivity(intent);
+                           }
+                            else{
+                               AlertDialog.Builder builder= new AlertDialog.Builder(SignUpActivity.this);
+                               builder.setMessage(e.getMessage())
+                                       .setTitle(R.string.signup_error_title)
+                                       .setPositiveButton(android.R.string.ok, null);
+
+                               AlertDialog dialog= builder.create();
+                               dialog.show();
+                           }
+                        }
+                    });
+
                 }
 
             }
