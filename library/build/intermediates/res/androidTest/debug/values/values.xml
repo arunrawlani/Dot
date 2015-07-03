@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Arun%20Rawlani/AndroidStudioProjects/Dot/library/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/AndiRayhan/Documents/GitHub/Dot/library/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="circularProgressBarStyle"/>
     <declare-styleable name="HoloCircularProgressBar"><attr format="dimension" name="stroke_width"/><attr format="float" name="progress"/><attr format="float" name="marker_progress"/><attr format="color" name="progress_color"/><attr format="color" name="progress_background_color"/><attr format="boolean" name="thumb_visible"/><attr format="boolean" name="marker_visible"/><attr name="android:gravity"/></declare-styleable>
