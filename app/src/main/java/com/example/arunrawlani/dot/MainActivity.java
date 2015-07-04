@@ -2,28 +2,20 @@ package com.example.arunrawlani.dot;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
-
-import java.util.List;
+import com.parse.ParseUser;
 
 
 public class MainActivity extends Activity{
@@ -40,12 +32,22 @@ public class MainActivity extends Activity{
         setContentView(R.layout.activity_main);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());//to get user data about how they are
                                                                 //using the app
+        ParseUser user = ParseUser.getCurrentUser();
+        if(ParseUser.getCurrentUser() == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            return;
+        }
 
-        Intent intent= new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        /*Context context = getApplicationContext();
+        CharSequence text = user.toString();
+        int duration = Toast.LENGTH_SHORT;
 
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();*/
+        Log.v("current user",user.getUsername());
     //Set the adapter for the list view
         mDrawerList = (ListView)findViewById(R.id.navList);
         addDrawerItems();

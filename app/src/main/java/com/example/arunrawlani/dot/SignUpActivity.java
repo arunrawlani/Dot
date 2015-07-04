@@ -1,12 +1,11 @@
 package com.example.arunrawlani.dot;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -99,12 +98,16 @@ public class SignUpActivity extends Activity {
                         @Override
                         public void done(ParseException e) {
                            if (e == null){
+                               Log.v("signup", "signup success");
                                Intent intent = new Intent(SignUpActivity.this, MainActivity.class); //ask! why not login?
-                               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                               //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                               //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                                startActivity(intent);
+                               return;
                            }
                             else{
+                               Log.v("signup","signup failure");
                                AlertDialog.Builder builder= new AlertDialog.Builder(SignUpActivity.this);
                                builder.setMessage(e.getMessage())
                                        .setTitle(R.string.signup_error_title)

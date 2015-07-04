@@ -11,22 +11,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_above="@+id/zero"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/auto_animate_switch"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/holoCircularProgressBar">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content">
 
-            <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
-                android:id="@+id/holoCircularProgressBar"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                app:marker_progress="0.3"
-                app:progress="0.4" />
         </LinearLayout>
     </ScrollView>
 
@@ -65,5 +59,26 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/random_color" />
+
+    <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
+        android:id="@+id/holoCircularProgressBar"
+        android:layout_width="154dp"
+        android:layout_height="128dp"
+        app:marker_progress="0.3"
+        app:progress="0.4"
+        android:layout_below="@+id/auto_animate_switch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="88dp" />
+
+    <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
+        android:id="@+id/holoCircularProgressBar2"
+        android:layout_width="154dp"
+        android:layout_height="128dp"
+        app:marker_progress="0.3"
+        app:progress="0.4"
+        android:layout_alignTop="@+id/holoCircularProgressBar"
+        android:layout_alignRight="@+id/auto_animate_switch"
+        android:layout_alignEnd="@+id/auto_animate_switch" />
 
 </RelativeLayout>
