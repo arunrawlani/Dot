@@ -14,7 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.LogOutCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 
@@ -47,6 +49,8 @@ public class MainActivity extends Activity{
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();*/
+        Toast.makeText(MainActivity.this,
+                "Welcome "+ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_SHORT).show();
         Log.v("current user",user.getUsername());
     //Set the adapter for the list view
         mDrawerList = (ListView)findViewById(R.id.navList);
@@ -89,6 +93,19 @@ public class MainActivity extends Activity{
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if(id == R.id.sign_out){
+            ParseUser.logOutInBackground(new LogOutCallback() {
+                @Override
+                public void done(ParseException e) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    return;
+                }
+            });
         }
 
         switch (id) {

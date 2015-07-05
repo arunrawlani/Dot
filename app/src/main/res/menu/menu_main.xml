@@ -9,4 +9,8 @@
         android:icon="@android:drawable/ic_menu_revert"
         android:title="@string/switch_theme">
     </item>
+
+    <item
+        android:id="@+id/sign_out"
+        android:title="@string/sign_out"></item>
 </menu>

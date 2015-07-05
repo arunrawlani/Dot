@@ -74,6 +74,12 @@ public class LoginActivity extends Activity {
 
                                 AlertDialog dialog= builder.create();
                                 dialog.show();
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                return;
                             }
                             else{
                                 AlertDialog.Builder builder= new AlertDialog.Builder(LoginActivity.this);

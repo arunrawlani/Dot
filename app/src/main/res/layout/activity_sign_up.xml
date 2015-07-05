@@ -94,39 +94,6 @@
         android:layout_alignParentStart="true" />
 
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Male"
-        android:id="@+id/child_gender1"
-        android:layout_below="@+id/child_age"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Female"
-        android:id="@+id/child_gender2"
-        android:layout_below="@+id/child_age"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3"
-        android:checked="false" />
-
-  
-
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/child_diagnosis"
-            android:hint="@string/diagnosis_date"
-            android:layout_below="@+id/child_gender1"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <EditText
             android:layout_width="330dp"
             android:layout_height="50dp"
@@ -134,19 +101,69 @@
             android:ems="10"
             android:id="@+id/child_medication"
             android:hint="@string/medication"
-            android:layout_below="@+id/child_diagnosis"
+            android:layout_above="@+id/signupButton"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/child_diagnosis"
+            android:layout_alignEnd="@+id/child_diagnosis" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signup_text"
             android:id="@+id/signupButton"
-            android:layout_below="@+id/child_medication"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="36dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/child_age"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1"
+            android:id="@+id/radioGroup"
+            android:layout_above="@+id/child_diagnosis">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:id="@+id/gender_male"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:id="@+id/gender_female"
+                android:layout_weight="0.10" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other"
+                android:id="@+id/gender_other"
+                android:layout_below="@+id/child_age"
+                android:layout_alignRight="@+id/child_medication"
+                android:layout_alignEnd="@+id/child_medication" />
+
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:hint="Diagnosis date"
+            android:id="@+id/child_diagnosis"
+            android:layout_above="@+id/child_medication"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

@@ -10,8 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -26,8 +26,9 @@ public class SignUpActivity extends Activity {
     protected EditText mEmail;
     protected EditText mChildname;
     protected EditText mChildage;
-    protected CheckBox mChildgender;
-    protected CheckBox mChildgender2;
+    protected RadioButton mChildGender;
+    protected RadioButton mChildGender2;
+    protected RadioButton mChildGender3;
     protected EditText mChilddiagnosis;
     protected EditText mChildmedication;
     protected Button mSignUpButton;
@@ -43,8 +44,10 @@ public class SignUpActivity extends Activity {
         mEmail= (EditText)findViewById(R.id.emailField);
         mChildname= (EditText)findViewById(R.id.child_name);
         mChildage= (EditText)findViewById(R.id.child_age);
-        mChildgender= (CheckBox)findViewById(R.id.child_gender1);
-        mChildgender2= (CheckBox)findViewById(R.id.child_gender2);
+
+        mChildGender = (RadioButton)findViewById(R.id.gender_male);
+        mChildGender2 = (RadioButton)findViewById(R.id.gender_female);
+        mChildGender3 = (RadioButton) findViewById(R.id.gender_other);
         mChilddiagnosis= (EditText)findViewById(R.id.child_diagnosis);
         mChildmedication= (EditText)findViewById(R.id.child_medication);
         mSignUpButton= (Button)findViewById(R.id.signupButton);
@@ -59,8 +62,13 @@ public class SignUpActivity extends Activity {
                 String childage= mChildage.getText().toString();
                 String childdiagnosis= mChilddiagnosis.getText().toString();
                 String childmedication= mChildmedication.getText().toString();
-                boolean childgender= mChildgender.isChecked();
-                boolean childgender2= mChildgender2.isChecked();
+                String childGender;
+                if(mChildGender.isChecked())
+                    childGender = "male";
+                else if(mChildGender2.isChecked())
+                    childGender = "female";
+                else
+                    childGender = "other";
 
 
                 username= username.trim();
@@ -93,6 +101,7 @@ public class SignUpActivity extends Activity {
                     //insert one for gender
                     newUser.put("DiagnosisDate", childdiagnosis);
                     newUser.put("Medication",childmedication);
+                    newUser.put("Gender",childGender);
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
