@@ -92,26 +92,26 @@
         android:layout_below="@+id/child_name"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/child_medication"
+        android:hint="@string/medication"
+        android:layout_below="@+id/child_diagnosis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/child_diagnosis"
+        android:layout_alignEnd="@+id/child_diagnosis" />
 
-
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/child_medication"
-            android:hint="@string/medication"
-            android:layout_above="@+id/signupButton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/child_diagnosis"
-            android:layout_alignEnd="@+id/child_diagnosis" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signup_text"
             android:id="@+id/signupButton"
+            android:layout_below="@+id/child_medication"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -124,8 +124,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:weightSum="1"
-            android:id="@+id/radioGroup"
-            android:layout_above="@+id/child_diagnosis">
+            android:id="@+id/radioGroup">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -159,7 +158,7 @@
             android:ems="10"
             android:hint="Diagnosis date"
             android:id="@+id/child_diagnosis"
-            android:layout_above="@+id/child_medication"
+            android:layout_below="@+id/radioGroup"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
