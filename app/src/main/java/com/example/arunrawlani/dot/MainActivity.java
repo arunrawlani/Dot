@@ -142,6 +142,7 @@ public class MainActivity extends Activity{
 
     public void showProgress(View view){
         //response on clicking the red button
+        //Intent intent = new Intent(this, com.interaxon.muse.museioreceiver.BrainwaveValuesActivity.class);
         Intent intent = new Intent(this, CircularProgressBar.class);
         startActivity(intent);
     }

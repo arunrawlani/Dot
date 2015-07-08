@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:text="@string/alpha" />
+	<LinearLayout
+	    android:id="@+id/alpha_vals_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/alpha_ch1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/alpha_ch2"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/alpha_ch3"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/alpha_ch4"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:text="@string/beta" />
+	<LinearLayout
+	    android:id="@+id/beta_vals_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/beta_ch1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/beta_ch2"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/beta_ch3"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/beta_ch4"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:text="@string/theta" />
+    <LinearLayout
+        android:id="@+id/theta_vals_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/theta_ch1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/theta_ch2"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/theta_ch3"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/theta_ch4"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:text="@string/delta" />
+    <LinearLayout
+        android:id="@+id/delta_vals_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/delta_ch1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/delta_ch2"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/delta_ch3"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+        <TextView
+            android:id="@+id/delta_ch4"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:textSize="20sp"
+	        android:text="@string/init_val" />
+    </LinearLayout>
+</LinearLayout>
