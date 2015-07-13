@@ -9,21 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CircularProgressBarSample">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/auto_animate_switch"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/holoCircularProgressBar">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-    </ScrollView>
-
 
     <Button
         android:id="@+id/zero"
@@ -48,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Auto animation"
+        android:text="Start"
         tools:ignore="NewApi"
         android:checked="false" />
 
@@ -60,25 +45,41 @@
         android:layout_alignParentRight="true"
         android:text="@string/random_color" />
 
-    <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
-        android:id="@+id/holoCircularProgressBar"
-        android:layout_width="154dp"
-        android:layout_height="128dp"
-        app:marker_progress="0.3"
-        app:progress="0.4"
-        android:layout_below="@+id/auto_animate_switch"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="88dp" />
 
-    <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
-        android:id="@+id/holoCircularProgressBar2"
-        android:layout_width="154dp"
-        android:layout_height="128dp"
-        app:marker_progress="0.3"
-        app:progress="0.4"
-        android:layout_alignTop="@+id/holoCircularProgressBar"
-        android:layout_alignRight="@+id/auto_animate_switch"
-        android:layout_alignEnd="@+id/auto_animate_switch" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/auto_animate_switch"
+        android:layout_above="@+id/zero"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
+            android:id="@+id/holoCircularProgressBar"
+            android:layout_width="261dp"
+            android:layout_height="245dp"
+            app:marker_progress="0.3"
+            app:progress="0.4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/zero"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/auto_animate_switch"
+            android:layout_gravity="center" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:text="Start Session"
+            android:id="@+id/start_button"
+            android:layout_gravity="bottom|right"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/one"
+            android:layout_toEndOf="@+id/one" />
+
+    </FrameLayout>
 
 </RelativeLayout>

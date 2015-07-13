@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -48,7 +50,21 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
 
     private ObjectAnimator mProgressBarAnimator;
 
+    private Button startButton;
+
     private Button mZero;
+
+    private int animation_counter = 0;
+
+    private int progressColor = 0;
+
+    private float currAlpha = 0f;
+    private float currBeta = 0f;
+    private float currTheta = 0f;
+    private float currDelta = 0f;
+
+    private float thetaBetaRatio = 0f;
+    private float thetaAlphaRatio = 0f;
 
     /*
      * (non-Javadoc)
@@ -80,6 +96,70 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
             @Override
             public void onClick(final View v) {
                 switchColor();
+            }
+        });
+        progressColor = mHoloCircularProgressBar.getProgressColor();
+        startButton = (Button) findViewById(R.id.start_button);
+
+        startButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startButton.setEnabled(false);
+                animate(mHoloCircularProgressBar, new AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        animation_counter++;
+                        Log.i("values counter",""+animation_counter+" "+thetaBetaRatio);
+                        if(animation_counter==30){
+                            if(mHoloCircularProgressBar.getProgress()>0.6f) {
+                                Log.i("values counter","animation done");
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CircularProgressBar.this);
+                                builder.setMessage("Optimal brain activity")
+                                        .setTitle("Session Finished")
+                                        .setPositiveButton(R.string.restart_session, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                CircularProgressBar.this.recreate();
+                                            }
+                                        });
+
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+                            else{
+                                AlertDialog.Builder builder= new AlertDialog.Builder(CircularProgressBar.this);
+                                builder.setMessage("Sub-optimal brain activity")
+                                        .setTitle("Session Finished")
+                                        .setPositiveButton(R.string.restart_session, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                CircularProgressBar.this.recreate();
+                                            }
+                                        });
+
+                                AlertDialog dialog= builder.create();
+                                dialog.show();
+                            }
+                            return;
+                        }
+                        animate(mHoloCircularProgressBar,this);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) {
+
+                    }
+                });
             }
         });
 
@@ -131,7 +211,12 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
                         @Override
                         public void onAnimationEnd(final Animator animation) {
                             if (!mAnimationHasEnded) {
-                                animate(mHoloCircularProgressBar, this);
+                                float tbRatio = thetaBetaRatio/10f;
+                                float taRatio = thetaAlphaRatio/10f;
+                                Log.i("animation", tbRatio + " " + taRatio);
+                                animate(mHoloCircularProgressBar, this, tbRatio, 1000);
+                                //animate(mHoloCircularProgressBar2, this, taRatio,500);
+
                             } else {
                                 mAnimationHasEnded = false;
                             }
@@ -169,92 +254,45 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        this.museReceiver.disconnect();
+    }
+
+
+    @Override
     public void receiveMuseElementsAlpha(MuseIOReceiver.MuseConfig config, final float[] alpha) {
-        Log.v("values", Arrays.toString(alpha));
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("values", Arrays.toString(alpha));
-                /*((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.alpha_ch1)).setText(String.format(
-                        "%.2f", alpha[0]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.alpha_ch2)).setText(String.format(
-                        "%.2f", alpha[1]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.alpha_ch3)).setText(String.format(
-                        "%.2f", alpha[2]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.alpha_ch4)).setText(String.format(
-                        "%.2f", alpha[3]));*/
-            }
-        });
+        Log.i("values alpha", Arrays.toString(alpha));
+        float average = (alpha[1] + alpha[2])/2f;
+        if(Float.isNaN(average)) average =0f;
+        currAlpha = (currAlpha+average)/2f;
     }
 
     @Override
     public void receiveMuseElementsBeta(MuseIOReceiver.MuseConfig config, final float[] beta) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("values", Arrays.toString(beta));
-                /*((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.beta_ch1)).setText(String.format(
-                        "%.2f", beta[0]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.beta_ch2)).setText(String.format(
-                        "%.2f", beta[1]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.beta_ch3)).setText(String.format(
-                        "%.2f", beta[2]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.beta_ch4)).setText(String.format(
-                        "%.2f", beta[3]));*/
-            }
-        });
+        float average = (beta[1] + beta[2])/2f;
+        if(Float.isNaN(average)) average =0f;
+        currBeta = (currBeta+average)/2f;
+        Log.i("values beta", Arrays.toString(beta));
     }
 
     @Override
     public void receiveMuseElementsTheta(MuseIOReceiver.MuseConfig config, final float[] theta) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("values", Arrays.toString(theta));
-                /*((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.theta_ch1)).setText(String.format(
-                        "%.2f", theta[0]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.theta_ch2)).setText(String.format(
-                        "%.2f", theta[1]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.theta_ch3)).setText(String.format(
-                        "%.2f", theta[2]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.theta_ch4)).setText(String.format(
-                        "%.2f", theta[3]));*/
-            }
-        });
+        float average = (theta[1] + theta[2])/2f;
+        if(Float.isNaN(average)) average =0f;
+        currTheta = (currTheta+average)/2f;
+
+        thetaBetaRatio = currTheta/currBeta;
+        thetaAlphaRatio = currTheta/currAlpha;
+        Log.i("values theta", Arrays.toString(theta));
     }
 
     @Override
     public void receiveMuseElementsDelta(MuseIOReceiver.MuseConfig config, final float[] delta) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("values",Arrays.toString(delta));
-                /*((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.delta_ch1)).setText(String.format(
-                        "%.2f", delta[0]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.delta_ch2)).setText(String.format(
-                        "%.2f", delta[1]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.delta_ch3)).setText(String.format(
-                        "%.2f", delta[2]));
-                ((TextView) BrainwaveValuesActivity.this
-                        .findViewById(com.interaxon.muse.museioreceiver.R.id.delta_ch4)).setText(String.format(
-                        "%.2f", delta[3]));*/
-            }
-        });
+        float average = (delta[1] + delta[2])/2f;
+        if(Float.isNaN(average)) average =0f;
+        currDelta = (currDelta+average)/2f;
+        Log.i("values delta", Arrays.toString(delta));
     }
 
     @Override
@@ -270,6 +308,7 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
     @Override
     public void receiveMuseBattery(MuseIOReceiver.MuseConfig config, int[] battery) {
         // Do nothing
+        Log.i("values battery", Arrays.toString(battery));
     }
 
     /**
@@ -342,8 +381,14 @@ public class CircularProgressBar extends Activity implements MuseIOReceiver.Muse
      */
     private void animate(final HoloCircularProgressBar progressBar,
                          final AnimatorListener listener) {
-        final float progress = (float) (Math.random() * 2);
-        int duration = 1000;
+        final float progress = (Math.max(0f,(10f - CircularProgressBar.this.thetaBetaRatio)))/10f;
+        if(progress>0.6f && progressBar.getProgressColor() == progressColor){
+            progressBar.setProgressColor(Color.rgb(0, 255, 0));
+        }
+        else if(progress<=0.6f && progressBar.getProgressColor() != progressColor){
+            progressBar.setProgressColor(progressColor);
+        }
+        int duration = 500;
         animate(progressBar, listener, progress, duration);
     }
 
